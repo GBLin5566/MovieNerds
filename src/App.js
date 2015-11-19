@@ -34,12 +34,11 @@ class App extends React.Component {
         const inputValue = event.target.value;
         if (event.keyCode == 13 && inputValue !== '') {
             const {items, newMovie, newRate, newComment} = this.state;
-            const item = {
-                movie: {newMovie},
-                content: {newComment},
-                rate: {newRate}
-            };
-            items.push(item);
+            items.push({
+                movie: newMovie,
+                content: newComment,
+                rate: newRate
+            });
             this.setState({
                 items: items,
                 newMovie: '',

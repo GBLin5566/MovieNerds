@@ -21,7 +21,7 @@ class Item extends React.Component {
                     <p>{rate}</p>
                 </div>
                 <div className="button-rotten">
-                    <input type="button" value="Rotten" onClick="window.open('www.yahoo.com.tw')"></input>
+                    <input type="button" value="Rotten" onClick={this.gotoRotten.bind(this, movie)}></input>
                 </div>
             </div>
         );
