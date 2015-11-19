@@ -1,6 +1,7 @@
 
 const React = require('react');
 const Rebase = require('re-base');
+const base = Rebase.createClass('https://movie-nerds.firebaseio.com');
 const Item = require('./Item');
 const NewItem = require('./NewItem');
 
@@ -18,6 +19,17 @@ class App extends React.Component {
         this.state = initialState;
     }
 
+    componentDidMount(){
+        this.ref = base.syncState(`items`, {
+            context: this,
+            state: 'items',
+            asArray: true
+        });
+    }
+
+    componentWillUnmount(){
+        base.removeBinding(this.ref);
+    }
 
     handleInput(event){
         const inputValue = event.target.value;
