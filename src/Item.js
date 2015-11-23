@@ -12,12 +12,16 @@ class Item extends React.Component {
     }
 
     render(){
-        const {index, movie, director, content, rate} = this.props;
+        const {index, movie, director, content, rate, onDestroy} = this.props;
         return(
-            <div className="item lead">
+            <div className="item lead well well-sm">
+                <div className="item-element">
                 <div className="movie">
-                    <h2><label>{movie}</label></h2>
-                    <h3><label>{director}</label></h3>
+                    <button type="button" className="btn btn-default btn-close" aria-label="Right Align" onClick={(event) => onDestroy(index)}>
+                        <span className="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                    <h1><label>{movie}</label></h1>
+                    <h3><label>Directed by {director}</label></h3>
                 </div>
                 <div className="rate">
                     <label>Rate: {rate}</label>
@@ -27,7 +31,7 @@ class Item extends React.Component {
                 </div>
                 <div className="button-rotten">
                     <input type="button" className="btn btn-info" value="Rotten" onClick={this.gotoRotten.bind(this, movie)}></input>
-                    <input type="button" className="btn btn-danger" value="Delete" onClick={this.deleteIndex.bind(this, index)}></input>
+                </div>
                 </div>
             </div>
         );

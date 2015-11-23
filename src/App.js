@@ -10,7 +10,8 @@ const initialState = {
     newMovie: '',
     newDirector: '',
     newRate: '',
-    newComment: ''
+    newComment: '',
+    collect: false
 };
 
 
@@ -32,13 +33,20 @@ class App extends React.Component {
         base.removeBinding(this.ref);
     }
 
+    handleCollect(){
+        const {collect} = this.state;
+        this.setState({
+            collect: !collect
+        });
+    }
+
     handleInput(event){
         const inputValue = event.target.value;
       //  if (event.keyCode == 13 && inputValue !== '') {
             const {items, newMovie, newDirector,newRate, newComment} = this.state;
             if (newMovie === '' || newRate === '' || newComment === '' || newDirector === '')
                 return;
-            items.push({
+            items.unshift({ // Put Element at first element
                 movie: newMovie,
                 director: newDirector,
                 content: newComment,
@@ -54,8 +62,12 @@ class App extends React.Component {
        // }
     }
 
-    handleDeleteItem(event){
-        
+    handleDeleteItem(index){
+        let {items} = this.state;
+        items.splice(index, 1);
+        this.setState({
+            items: items
+        });
     }
 
     handleMovieChange(event){
@@ -89,45 +101,67 @@ class App extends React.Component {
                 director={director}
                 content={content}
                 rate={rate}
+                onDestroy={this.handleDeleteItem.bind(this)}
             />        
         );
     }
     render(){
-        const {items, newMovie, newDirector ,newRate, newComment} = this.state;
+        const {items, newMovie, newDirector ,newRate, newComment, collect} = this.state;
         return(
             <div className="app">
-                <div className="new-item">
-                <form className="form-inline show">
-                    <div className="form-group">
-                        <label>Movie</label>
-                        <input type="text"
-                        className="form-control" 
-                        value={newMovie}
-                        placeholder="ex. 2001: Space Odyssey"
-                        onChange={this.handleMovieChange.bind(this)}
-                        ></input>
+                <nav className="navbar navbar-inverse " role="navigation">
+                    <div className="contrainer-fluid">
+                        <div className="navbar-header">
+                            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span className="sr-only">Toggle navigation</span>
+                            <span className="icon-bar"></span>
+                            <span className="icon-bar"></span>
+                            <span className="icon-bar"></span>
+                            </button>
+                            <a className="navbar-brand" href="#">Movie Nerds</a>
+                        </div>
+                        <div className="collapse navbar-collapse">
+                            <ul>
+                                <button type="button" className="btn btn-default btn-collect" onClick={this.handleCollect.bind(this)}>
+                                    <span className={`glyphicon ${collect ? 'glyphicon-menu-up' : 'glyphicon-menu-down'}`}></span>
+                                </button>
+                            </ul>
+                        </div>
                     </div>
-                    <div className="form-group">
-                        <label>Director</label>
-                        <input type="text"
-                        className="form-control"
-                        value={newDirector}
-                        placeholder="Ang Lee"
-                        onChange={this.handleDirectorChange.bind(this)}
-                        ></input>
-                    </div>
-                    <div className="form-group">
-                        <label>Rate</label>
-                        <input 
-                        type="text" 
-                        className="form-control" 
-                        value={newRate}
-                        placeholder="8.5"
-                        onChange={this.handleRateChange.bind(this)} 
-                        ></input>
-                    </div>
-                </form>
-                    <div className="form-group">
+                </nav>
+
+                <div className={`new-item ${collect ? 'hidden' : 'show'}`}>
+	                <form className="form-inline">
+	                    <div className="form-group">
+	                        <label>Movie</label>
+	                        <input type="text"
+	                        className="form-control" 
+	                        value={newMovie}
+	                        placeholder="ex. 2001: Space Odyssey"
+	                        onChange={this.handleMovieChange.bind(this)}
+	                        ></input>
+	                    </div>
+	                    <div className="form-group">
+	                        <label>Director</label>
+	                        <input type="text"
+	                        className="form-control"
+	                        value={newDirector}
+	                        placeholder="Ang Lee"
+	                        onChange={this.handleDirectorChange.bind(this)}
+	                        ></input>
+	                    </div>
+	                    <div className="form-group">
+	                        <label>Rate</label>
+	                        <input 
+	                        type="text" 
+	                        className="form-control" 
+	                        value={newRate}
+	                        placeholder="8.5"
+	                        onChange={this.handleRateChange.bind(this)} 
+	                        ></input>
+	                    </div>
+	                </form>
+                    <div className="form-group ">
                         <label>Comment</label>
                         <textarea 
                         className="form-control" 

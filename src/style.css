@@ -1,4 +1,8 @@
 
+body {
+    background-image: url('http://www.template-joomspirit.com/template-joomla/template-100/images/background/light-blue-NR.jpg');
+}
+
 .app {
     margin: 1.%;
 }
@@ -11,16 +15,37 @@
     float: right;
 }
 
+.btn-collect {
+    float: right;
+    margin-top: .65%;
+}
+
+.btn-close {
+    float: right;
+}
+
 .in-new-item {
     margin-left: .5%;
 }
 .item {
-    width: 100%;
+    width: 97%;
     margin: 1.25%;
     float: left;
+}
+
+.item-element {
+    margin: 1%;
 }
 
 
 .new-item {
     margin: 1.25%;
+}
+
+.form-group {
+    margin: .25%;
+}
+
+.form-control {
+    margin: .5%;
 }
