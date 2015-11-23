@@ -47,7 +47,7 @@ class App extends React.Component {
             if (newMovie === '' || newRate === '' || newComment === '' || newDirector === '')
                 return;
             items.unshift({ // Put Element at first element
-                movie: newMovie,
+                movie: newMovie.toUpperCase(),
                 director: newDirector,
                 content: newComment,
                 rate: newRate
@@ -167,7 +167,7 @@ class App extends React.Component {
                         className="form-control" 
                         value={newComment}
                         row="3"
-                        placeholder="Nice Moive"
+                        placeholder="Nice Movie"
                         onChange={this.handleCommentChange.bind(this)}
                         ></textarea>
                     </div>

@@ -27,11 +27,12 @@ class Item extends React.Component {
                     <label>Rate: {rate}</label>
                 </div>
                 <div className="usercontenet">
-                    <p>{content}</p>
+                    <h4>{content}</h4>
                 </div>
                 <div className="button-rotten">
                     <input type="button" className="btn btn-info" value="Rotten" onClick={this.gotoRotten.bind(this, movie)}></input>
                 </div>
+                
                 </div>
             </div>
         );
