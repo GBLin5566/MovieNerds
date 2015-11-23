@@ -7,21 +7,27 @@ class Item extends React.Component {
         window.open("http://www.rottentomatoes.com/search/?search="+string);
     }
 
+    deleteIndex(index){
+        return index;
+    }
+
     render(){
-        const {movie, content, rate} = this.props;
+        const {index, movie, director, content, rate} = this.props;
         return(
-            <div className="item">
+            <div className="item lead">
                 <div className="movie">
-                    <p>{movie}</p>
+                    <h2><label>{movie}</label></h2>
+                    <h3><label>{director}</label></h3>
+                </div>
+                <div className="rate">
+                    <label>Rate: {rate}</label>
                 </div>
                 <div className="usercontenet">
                     <p>{content}</p>
                 </div>
-                <div className="rate">
-                    <p>{rate}</p>
-                </div>
                 <div className="button-rotten">
-                    <input type="button" value="Rotten" onClick={this.gotoRotten.bind(this, movie)}></input>
+                    <input type="button" className="btn btn-info" value="Rotten" onClick={this.gotoRotten.bind(this, movie)}></input>
+                    <input type="button" className="btn btn-danger" value="Delete" onClick={this.deleteIndex.bind(this, index)}></input>
                 </div>
             </div>
         );
