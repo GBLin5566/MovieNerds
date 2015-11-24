@@ -3,7 +3,6 @@ const React = require('react');
 const Rebase = require('re-base');
 const base = Rebase.createClass('https://movie-nerds.firebaseio.com');
 const Item = require('./Item');
-const NewItem = require('./NewItem');
 
 const initialState = {
     items: [],
