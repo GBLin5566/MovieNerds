@@ -25,4 +25,4 @@ Facebook login.
 
 Share the list with friends via Facebook.
 
-http://imgur.com/0wrOXiI
+![alt tag](https://github.com/GBLin5566/MovieNerds/blob/master/movienerds.png)
