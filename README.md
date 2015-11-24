@@ -17,6 +17,8 @@ You could view it at localhost:3000 now.
 
 # TODO
 
+Make the code works on the Azure(or AWS).
+
 Facebook login.
 
 Share the list with friends via Facebook.
