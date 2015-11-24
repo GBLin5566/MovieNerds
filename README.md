@@ -19,6 +19,10 @@ You could view it at localhost:3000 now.
 
 Make the code works on the Azure(or AWS).
 
+Use Bootstrap Modal to pop out the comments.
+
 Facebook login.
 
 Share the list with friends via Facebook.
+
+http://imgur.com/0wrOXiI
