@@ -16,6 +16,9 @@
   "bugs": {
     "url": "https://github.com/GBLin5566/MovieNerds/issues"
   },
+  "engines": {
+    "node": "4.2.1"
+  },
   "homepage": "https://github.com/GBLin5566/MovieNerds#readme",
   "dependencies": {
     "bootstrap": "^3.3.5",
